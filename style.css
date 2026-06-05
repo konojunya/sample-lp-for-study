@@ -1,0 +1,808 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --color-ink: #3f245e;
+  --color-purple: #6f4c99;
+  --color-purple-soft: #bda4e8;
+  --color-pink: #f5a6ce;
+  --color-pink-soft: #fff0f8;
+  --color-lilac: #eee7ff;
+  --color-mint: #dff9ec;
+  --color-gold: #ffd36f;
+  --color-cream: #fff9fc;
+  --color-white: #ffffff;
+  --color-muted: #837092;
+  --color-border: #ead8ee;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 48px;
+  --space-7: 64px;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+
+  --shadow-soft: 0 10px 32px rgba(111, 76, 153, 0.12);
+  --shadow-card: 0 16px 36px rgba(111, 76, 153, 0.16);
+}
+
+body {
+  margin: 0;
+  font-family: "Noto Sans JP", system-ui, sans-serif;
+  color: var(--color-ink);
+  background:
+    linear-gradient(180deg, #fff9fc 0%, #fff7fc 36%, #f8f2ff 72%, #eee7ff 100%);
+  line-height: 1.8;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+.site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--space-3);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px var(--space-4);
+}
+
+.site-nav,
+.footer-nav {
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+.site-nav a,
+.footer-nav a {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-purple);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.site-nav a:hover,
+.footer-nav a:hover {
+  color: var(--color-pink);
+}
+
+.nav-ticket {
+  display: none;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  color: var(--color-ink);
+  background-image:
+    linear-gradient(90deg, rgba(255, 247, 252, 0.9), rgba(255, 247, 252, 0.58)),
+    url("/keyvisual.png");
+  background-size: cover;
+  background-position: 58% center;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 96px;
+  background: linear-gradient(180deg, rgba(255, 249, 252, 0), #fff9fc 74%);
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  max-width: 1120px;
+  min-height: 640px;
+  margin: 0 auto;
+  padding: 104px var(--space-4) 112px;
+}
+
+.hero-copy-area {
+  max-width: 620px;
+}
+
+.eyebrow,
+.section-label,
+.ticket-label {
+  margin: 0 0 var(--space-2);
+  font-family: "Shippori Mincho", serif;
+  font-size: 13px;
+  font-style: italic;
+  font-weight: 600;
+  color: #bb7db7;
+}
+
+.hero h1 {
+  margin: 0;
+  font-family: "Shippori Mincho", serif;
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 1.28;
+  color: var(--color-ink);
+}
+
+.hero-title-en {
+  margin: var(--space-2) 0 0;
+  font-family: "Shippori Mincho", serif;
+  font-size: 13px;
+  color: #a685bd;
+}
+
+.hero-copy {
+  max-width: 520px;
+  margin: var(--space-4) 0 var(--space-5);
+  font-size: 14px;
+  color: #5f4a73;
+}
+
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  align-items: flex-start;
+}
+
+.button {
+  display: inline-block;
+  width: 100%;
+  padding: 13px 28px;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 14px;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s, color 0.2s;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card);
+}
+
+.button-primary {
+  color: var(--color-ink);
+  background: linear-gradient(135deg, var(--color-gold), #ffddeb);
+}
+
+.button-secondary,
+.button-secondary-dark {
+  color: var(--color-ink);
+  border-color: #d7b9e8;
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 10px 24px rgba(111, 76, 153, 0.1);
+}
+
+.button-secondary:hover,
+.button-secondary-dark:hover {
+  background: var(--color-white);
+}
+
+.release-bar {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  max-width: 900px;
+  margin: -66px auto 0;
+  padding: 0 var(--space-4);
+  background: transparent;
+}
+
+.release-item {
+  padding: var(--space-3) var(--space-4);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(234, 216, 238, 0.75);
+}
+
+.release-item span {
+  display: block;
+  margin-bottom: var(--space-1);
+  font-size: 11px;
+  color: var(--color-muted);
+}
+
+.release-item strong {
+  font-family: "Zen Maru Gothic", "Noto Sans JP", sans-serif;
+  font-size: 16px;
+  color: var(--color-ink);
+}
+
+.section {
+  position: relative;
+  padding: 88px var(--space-4);
+}
+
+.section::before {
+  content: "✦";
+  position: absolute;
+  color: var(--color-gold);
+  font-size: 24px;
+}
+
+.section-heading {
+  max-width: 760px;
+  margin: 0 auto var(--space-6);
+  text-align: center;
+}
+
+.section-heading h2,
+.trailer-copy h2,
+.newsletter-box h2 {
+  margin: 0;
+  font-family: "Shippori Mincho", serif;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--color-ink);
+}
+
+.section-heading p,
+.trailer-copy p,
+.newsletter-box p {
+  margin: var(--space-3) 0 0;
+  color: var(--color-muted);
+  font-size: 14px;
+}
+
+.story::before {
+  left: 8%;
+  top: 34%;
+}
+
+.story-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+  max-width: 1040px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.story-text {
+  position: relative;
+  padding: var(--space-5);
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid #efd5e3;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+}
+
+.story-text::before,
+.story-text::after {
+  content: "✧";
+  position: absolute;
+  color: #d8add8;
+  font-size: 18px;
+}
+
+.story-text::before {
+  left: 14px;
+  top: 10px;
+}
+
+.story-text::after {
+  right: 14px;
+  bottom: 10px;
+}
+
+.story-text h3 {
+  margin: 0 0 var(--space-3);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid #ecd4e0;
+  font-family: "Shippori Mincho", serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--color-purple);
+}
+
+.story-text p {
+  margin: 0 0 var(--space-3);
+  color: #5f4a73;
+  font-size: 14px;
+}
+
+.story-visual {
+  margin: 0;
+  overflow: hidden;
+  background: var(--color-white);
+  border: 1px solid #e6d0ee;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+}
+
+.story-visual img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.points::before {
+  right: 10%;
+  top: 20%;
+}
+
+.point-grid,
+.character-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.point-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-3);
+  align-items: center;
+  padding: var(--space-4);
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.point-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card);
+}
+
+.point-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  font-size: 25px;
+}
+
+.icon-mint {
+  color: #4ba783;
+  background: #d9f8eb;
+}
+
+.icon-pink {
+  color: #cf5b9b;
+  background: #ffe3f0;
+}
+
+.icon-lilac {
+  color: #8b63d3;
+  background: #efe7ff;
+}
+
+.point-card h3,
+.character-card h3,
+.ticket-card h3 {
+  margin: 0 0 var(--space-2);
+  font-family: "Zen Maru Gothic", "Noto Sans JP", sans-serif;
+  font-size: 18px;
+  color: var(--color-ink);
+}
+
+.point-card p,
+.character-card p {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 13px;
+}
+
+.characters::before {
+  left: 12%;
+  top: 22%;
+}
+
+.character-card {
+  text-align: center;
+}
+
+.character-mark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 78px;
+  height: 78px;
+  margin: 0 auto var(--space-3);
+  border: 10px solid rgba(255, 255, 255, 0.62);
+  border-radius: 50%;
+  font-family: "Zen Maru Gothic", "Noto Sans JP", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  box-shadow: var(--shadow-soft);
+}
+
+.mark-green {
+  color: #2e7b63;
+  background: #9ee8c9;
+}
+
+.mark-blue {
+  color: #426fba;
+  background: #a8d2ff;
+}
+
+.mark-pink {
+  color: #b43d88;
+  background: #ff9dcd;
+}
+
+.mark-gold {
+  color: #8f6b17;
+  background: #ffe08b;
+}
+
+.trailer {
+  padding: 88px var(--space-4);
+}
+
+.trailer-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+  max-width: 1040px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.trailer-copy .button {
+  margin-top: var(--space-4);
+}
+
+.trailer-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 260px;
+  overflow: hidden;
+  color: var(--color-white);
+  text-decoration: none;
+  background-image:
+    linear-gradient(180deg, rgba(63, 36, 94, 0.08), rgba(63, 36, 94, 0.22)),
+    url("/keyvisual.png");
+  background-size: cover;
+  background-position: center right;
+  border: 1px solid #e6d0ee;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  transition: transform 0.2s;
+}
+
+.trailer-panel:hover {
+  transform: translateY(-3px);
+}
+
+.play-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 78px;
+  height: 78px;
+  margin-bottom: var(--space-3);
+  padding-left: var(--space-1);
+  border-radius: 50%;
+  color: var(--color-ink);
+  background: var(--color-gold);
+  box-shadow: 0 14px 34px rgba(63, 36, 94, 0.22);
+}
+
+.trailer-note {
+  font-family: "Zen Maru Gothic", "Noto Sans JP", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.tickets::before {
+  right: 9%;
+  top: 22%;
+}
+
+.ticket-panel {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: var(--space-4);
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+}
+
+.ticket-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+.ticket-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.ticket-featured {
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+.price {
+  margin: var(--space-2) 0 var(--space-3);
+  font-family: "Zen Maru Gothic", "Noto Sans JP", sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  color: #c03d87;
+}
+
+.price span {
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+.ticket-card ul {
+  padding-left: var(--space-4);
+  margin: 0 0 var(--space-4);
+  color: var(--color-muted);
+  font-size: 13px;
+}
+
+.ticket-card .button {
+  margin-top: auto;
+}
+
+.ticket-bonus {
+  display: none;
+}
+
+.newsletter {
+  padding: 48px var(--space-4);
+}
+
+.newsletter-box {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+  max-width: 1040px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.signup-form label {
+  display: block;
+  margin-bottom: var(--space-2);
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+
+.signup-form input {
+  width: 100%;
+  padding: 15px 20px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 22px rgba(111, 76, 153, 0.08);
+}
+
+.signup-form input:focus {
+  border-color: var(--color-purple-soft);
+}
+
+.signup-form .button {
+  max-width: none;
+  border: 0;
+  font-family: inherit;
+  font-size: 16px;
+}
+
+.site-footer {
+  padding: var(--space-5) var(--space-4);
+  color: var(--color-muted);
+}
+
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.site-footer p {
+  margin: var(--space-2) 0 0;
+}
+
+.credit {
+  width: 100%;
+  font-size: 12px;
+  text-align: center;
+}
+
+@media (min-width: 640px) {
+  .hero-actions {
+    flex-direction: row;
+  }
+
+  .button {
+    width: auto;
+  }
+
+  .release-bar {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .form-row {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+  }
+}
+
+@media (min-width: 768px) {
+  .site-header {
+    padding: 28px var(--space-6);
+  }
+
+  .site-nav {
+    gap: var(--space-5);
+  }
+
+  .nav-ticket {
+    display: inline-block;
+    padding: 10px 20px;
+    color: var(--color-ink);
+    background: rgba(255, 227, 240, 0.82);
+    border: 1px solid #e5b8d4;
+    border-radius: 999px;
+    box-shadow: 0 8px 18px rgba(111, 76, 153, 0.1);
+  }
+
+  .hero {
+    background-image:
+      linear-gradient(90deg, rgba(255, 247, 252, 0.86), rgba(255, 247, 252, 0.08)),
+      url("/keyvisual.png");
+    background-position: center right;
+  }
+
+  .hero-inner {
+    min-height: 700px;
+    padding: 112px var(--space-6) 132px;
+  }
+
+  .hero h1 {
+    font-size: 54px;
+  }
+
+  .hero-copy {
+    font-size: 15px;
+  }
+
+  .release-bar {
+    margin-top: -112px;
+  }
+
+  .section {
+    padding: 104px var(--space-6);
+  }
+
+  .section-heading h2,
+  .trailer-copy h2,
+  .newsletter-box h2 {
+    font-size: 38px;
+  }
+
+  .story-layout,
+  .trailer-inner {
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+
+  .story-visual img {
+    height: 340px;
+  }
+
+  .point-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .character-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .ticket-panel {
+    grid-template-columns: 1fr 260px;
+    align-items: center;
+    padding: var(--space-5);
+  }
+
+  .ticket-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ticket-featured {
+    padding-top: 0;
+    padding-left: var(--space-5);
+    border-top: 0;
+    border-left: 1px solid var(--color-border);
+  }
+
+  .ticket-bonus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 210px;
+  }
+
+  .ticket-bonus img {
+    width: 220px;
+    height: 138px;
+    object-fit: cover;
+    border: 1px solid #dbc1ea;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+  }
+
+  .newsletter-box {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .site-footer {
+    padding: var(--space-6) var(--space-7);
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr auto;
+    align-items: end;
+  }
+
+  .credit {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero h1 {
+    font-size: 60px;
+  }
+
+  .story-visual img {
+    height: 380px;
+  }
+}
